@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --ui-primary: #7A0E14;
+  --ui-secondary: #C1121F;
+  --ui-background: #F8FAFC;
+  --ui-card: #FFFFFF;
+  --ui-radius: 16px;
+  --ui-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+body {
+  margin: 0;
+  background: var(--ui-background);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html {
+  overflow-x: hidden;
+}
+
+button, input, select, textarea {
+  touch-action: manipulation;
+}
+
+@media (max-width: 767px) {
+  body {
+    min-width: 320px;
+  }
+
+  table {
+    font-size: 0.8125rem;
+  }
+
+  input, select, textarea, button {
+    max-width: 100%;
+  }
+
+  .recharts-responsive-container {
+    min-width: 0 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
