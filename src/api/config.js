@@ -11,16 +11,18 @@ const getBaseURL = () => {
         return 'https://api.umoyolink.com';
     }
 
-    // Priority 3: Default development URL - WITHOUT /api
+    // Priority 3: Default development URL (server root)
     return 'http://localhost:5000';
 };
+
+const getApiBaseURL = () => `${getBaseURL().replace(/\/api$/, '')}/api`;
 
 const API_CONFIG = {
     // ✅ Base URL (no /api prefix) - for health checks
     baseURL: getBaseURL(),
     
-    // ✅ API URL - SAME as baseURL (no /api prefix)
-    apiBaseURL: getBaseURL(),
+    // API routes are mounted by the backend under /api.
+    apiBaseURL: getApiBaseURL(),
     
     // ✅ Timeout
     timeout: parseInt(import.meta.env.VITE_API_TIMEOUT) || 60000,
